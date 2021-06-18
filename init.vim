@@ -1,60 +1,72 @@
-"if bufwinnr(1)
-"    map <Up> <C-W>2-
-"   map <Down> <C-W>2+
-"  map <Left> <C-W>2<
-" map <Right> <C-W>2>
-"endif
+if bufwinnr(2)
+    map <Up> <C-W>2-
+    map <Down> <C-W>2+
+    map <Left> <C-W>2<
+    map <Right> <C-W>2>
+endif
+nnoremap <silent> vv <C-w>v
 " remap ctrl+hkjl to jump windows in normal mode
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+nmap <C-h> <C-W>h
+
+set guifont=Fira\ Mono\ NF:h15
+let g:neovide_refresh_rate=140
+let g:neovide_no_idle=v:true
+let g:neovide_transparency=0.8
+let g:neovide_cursor_animation_length=0.0001
+let g:neovide_window_floating_blur=1
+let g:neovide_fullscreen=0
 "-----------------------vim-plug----------------------------
 call plug#begin('~/.config/nvim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'neoclide/coc.nvim', {'branch':'release'}
 Plug 'joshdick/onedark.vim',
+Plug 'ap/vim-css-color'
 let g:coc_global_extensions=[
-            \'coc-omnisharp',
-            \'coc-html',
-            \'coc-eslint',
-            \'coc-snippets',
-            \'coc-emmet',
-            \'coc-clangd',
-            \'coc-java',
-            \'coc-pairs',
-            \'coc-json',
-            \'coc-vimtex',
-            \'coc-texlab',
-            \'coc-lists',
-            \'coc-highlight',
-            \'coc-css',
-            \'coc-git',
-            \'coc-phpls',
-            \'coc-prettier',
-            \'coc-wxml',
-            \'coc-tsserver',
-            \'coc-vetur',
-            \'coc-stylelint',
-            \'coc-python',
-            \'coc-tabnine',
-            \]
+        \'coc-omnisharp',
+        \'coc-html',
+        \'coc-eslint',
+        \'coc-snippets',
+        \'coc-emmet',
+        \'coc-clangd',
+        \'coc-java',
+        \'coc-pairs',
+        \'coc-json',
+        \'coc-vimtex',
+        \'coc-texlab',
+        \'coc-lists',
+        \'coc-highlight',
+        \'coc-css',
+        \'coc-git',
+        \'coc-phpls',
+        \'coc-prettier',
+        \'coc-wxml',
+        \'coc-tsserver',
+        \'coc-vetur',
+        \'coc-stylelint',
+        \]
 Plug 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
-            \ ['brown', 'RoyalBlue3'],
-            \ ['Darkblue', 'SeaGreen3'],
-            \ ['darkgray', 'DarkOrchid3'],
-            \ ['darkgreen', 'firebrick3'],
-            \ ['darkcyan', 'RoyalBlue3'],
-            \ ['darkred', 'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['brown', 'firebrick3'],
-            \ ['gray', 'RoyalBlue3'],
-            \ ['black', 'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['Darkblue', 'firebrick3'],
-            \ ['darkgreen', 'RoyalBlue3'],
-            \ ['darkcyan', 'SeaGreen3'],
-            \ ['darkred', 'DarkOrchid3'],
-            \ ['red', 'firebrick3'],
-            \ ]
+        \ ['brown', 'RoyalBlue3'],
+        \ ['Darkblue', 'SeaGreen3'],
+        \ ['darkgray', 'DarkOrchid3'],
+        \ ['darkgreen', 'firebrick3'],
+        \ ['darkcyan', 'RoyalBlue3'],
+        \ ['darkred', 'SeaGreen3'],
+        \ ['darkmagenta', 'DarkOrchid3'],
+        \ ['brown', 'firebrick3'],
+        \ ['gray', 'RoyalBlue3'],
+        \ ['black', 'SeaGreen3'],
+        \ ['darkmagenta', 'DarkOrchid3'],
+        \ ['Darkblue', 'firebrick3'],
+        \ ['darkgreen', 'RoyalBlue3'],
+        \ ['darkcyan', 'SeaGreen3'],
+        \ ['darkred', 'DarkOrchid3'],
+        \ ['red', 'firebrick3'],
+        \ ]
 let g:rbpt_max = 8
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
@@ -65,13 +77,13 @@ au Syntax * RainbowParenthesesLoadChevrons
 "各种代码的配色
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = [
-            \'css',
-            \'cs',
-            \'markdown',
-            \'reactjavascript',
-            \'reacttypescript',
-            \'php',
-            \]
+        \'css',
+        \'cs',
+        \'markdown',
+        \'reactjavascript',
+        \'reacttypescript',
+        \'php',
+        \]
 Plug 'DougBeney/pickachu'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/neco-vim'
@@ -80,8 +92,9 @@ Plug 'voldikss/vim-floaterm'
 let g:floaterm_position = 'center'
 Plug '907th/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
-Plug 'ryanoasis/vim-devicons'
-Plug 'flazz/vim-colorschemes'
+Plug 'ghifarit53/tokyonight-vim'
+
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'jacoborus/tender.vim'
 " colorscheme tender
 Plug 'rakr/vim-one'
@@ -90,26 +103,30 @@ Plug 'drewtempelmeyer/palenight.vim'
 " colorscheme palenight
 Plug 'KeitaNakamura/neodark.vim'
 " colorscheme neodark
-Plug 'iCyMind/NeoSolarized'
-" colorscheme NeoSolarized
 Plug 'crusoexia/vim-monokai'
 " colorscheme monokai
 Plug 'morhetz/gruvbox'
 " colorscheme gruvbox
-" latex support
+"
+Plug 'shaunsingh/nord.nvim'
+"latex support
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 Plug 'fmoralesc/molokayo'
 Plug 'majutsushi/tagbar', {'on':'TagbarToggle'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'vim-airline/vim-airline'
+Plug  'vim-airline/vim-airline' 
+Plug  'vim-airline/vim-airline-themes' 
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_statusline_ontop=1
+let g:airline_focuslost_inactive=1
 Plug 'tpope/vim-fugitive'
 Plug 'cdelledonne/vim-cmake'
 Plug 'ryanoasis/vim-devicons'
-Plug 'Yggdroot/indentLine'
 Plug 'uiiaoo/java-syntax.vim', {'for':'java'}
 Plug 'othree/html5.vim', {'for':['html','vue','php']}
 Plug 'mattn/emmet-vim', {'for':['html','xml','vue','php','typescriptreact','javascriptreact']}
@@ -125,9 +142,12 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'leshill/vim-json', {'for':'json'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+autocmd  StdinReadPre  *  let  s: std_in = 1 
+autocmd  VimEnter  *  if  argc ()  ==  1  &&  isdirectory ( argv ()[ 0 ])  &&  ! exists ( ' s:std_in ' ) |
+     \  execute  ' NERDTree '  argv ()[ 0 ] |  wincmd  p  |  enew  |  execute  ' cd  ' . argv ()[ 0 ] |  endif
 Plug 'chemzqm/wxapp.vim', {'for':['wxml','wxss','js']}
 Plug 'OmniSharp/omnisharp-vim', {'for':'cs'}
 "
@@ -140,21 +160,23 @@ let g:coc_npm_path = '/home/askee/.nvm/versions/node/v15.12.0/bin/npm'
 let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 "------------------------------coc.nvim---------------------------------------
+
 filetype on
 autocmd CursorHold * silent call CocActionAsync('highlight')
 set hidden
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+set noshowmode 
 inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -274,6 +296,7 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
     autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
     autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    
     autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
     " Navigate up and down by method/property/field
     autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
@@ -317,14 +340,19 @@ set sm
 set selection=inclusive
 set wildmenu
 set mousemodel=popup
-set termguicolors
 if(has("mac")||has("macunix"))
     set termguicolors!
 endif
-let g:onedark_hide_endofbuffer = 1
-let g:onedark_terminal_italics=1
-colorscheme onedark
-let g:webdevicons_enable_nerdtree = 1
+"let g:onedark_hide_endofbuffer = 1
+let g:nord_contrast =0
+let g:nord_borders =0 
+let g:nord_disable_background= 1
+let g:tokyonight_disable_background=1
+"let g:tokyonight_style = "storm"
+let g:airline_theme = "tokyonight"
+set termguicolors
+
+colorscheme palenight
 set re=1
 set lazyredraw
 set synmaxcol=0
@@ -335,7 +363,7 @@ set cuc
 set ruler
 set showcmd
 set scrolloff=2
-set laststatus=2
+set laststatus=1
 set foldenable
 set foldmethod=manual
 set cursorline
@@ -349,7 +377,6 @@ set expandtab
 set smarttab
 " 显示行号
 set number
-set showmode
 " 历史记录数
 set history=1000
 "搜索逐字符高亮
@@ -367,8 +394,6 @@ map <S-H> :tabp<CR>
 map <S-L> :tabn<CR>
 map <S-Left> :tabp<CR>
 map <S-Right> :tabn<CR>
-map <C-H> :bn<CR>
-map <C-L> :bp<CR>
 map <C-Left> :bn<CR>            "
 map <C-Right> :bp<CR>
 noremap <F12> :Format<CR>:syntax sync fromstart<CR>
@@ -467,11 +492,9 @@ set matchtime=5
 " 光标移动到buffer的顶部和底部时保持3行距离
 set scrolloff=5
 set autochdir "输出时只有文件名，不带./ ../等目录前缀(默认了执行％在当前的目录下)
-set termencoding=UTF-8
-set encoding=UTF-8
 "在插入模式中使用Ctrl+v粘贴全局剪贴板内容
-imap <C-V> <Esc>"+gp
-nmap <C-V> "+gp
+"imap <C-V> <Esc>"+gp
+"nmap <C-V> "+gp
 "在Visual模式中使用Ctrl+c复制内容到全局剪贴板
 vnoremap <C-c> "+y
 "在Visual模式中使用Ctrl+x剪切内容到全局剪贴板
@@ -489,18 +512,16 @@ set ttimeoutlen=150
 "退出插入模式
 "autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
 "#####################################################################
-"
-"
-"
+
 "fzf-----------------------------------------------------------------------
-function! s:fzf_statusline()
+"function! s:fzf_statusline()
     " Override statusline as you like
-    highlight fzf1 ctermfg=161 ctermbg=251
-    highlight fzf2 ctermfg=23 ctermbg=251
-    highlight fzf3 ctermfg=237 ctermbg=251
-    setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
+    "highlight fzf1 ctermfg=161 ctermbg=251
+    "highlight fzf2 ctermfg=23 ctermbg=251
+    "highlight fzf3 ctermfg=237 ctermbg=251
+   " setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+"endfunction
+"autocmd! User FzfStatusLine call <SID>fzf_statusline()
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " [[B]Commits] Customize the options used by 'git log':
