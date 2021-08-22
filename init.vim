@@ -18,8 +18,13 @@ let g:neovide_transparency=0.8
 let g:neovide_cursor_animation_length=0.0001
 let g:neovide_window_floating_blur=1
 let g:neovide_fullscreen=0
+
 "-----------------------vim-plug----------------------------
 call plug#begin('~/.config/nvim/plugged')
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 Plug 'mhinz/vim-startify'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'neoclide/coc.nvim', {'branch':'release'}
@@ -74,7 +79,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 au Syntax * RainbowParenthesesLoadChevrons
-"各种代码的配色
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = [
         \'css',
@@ -94,20 +98,11 @@ Plug '907th/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
 Plug 'ghifarit53/tokyonight-vim'
 
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'jacoborus/tender.vim'
-" colorscheme tender
 Plug 'rakr/vim-one'
-"colorscheme one
 Plug 'drewtempelmeyer/palenight.vim'
-" colorscheme palenight
 Plug 'KeitaNakamura/neodark.vim'
-" colorscheme neodark
-Plug 'crusoexia/vim-monokai'
-" colorscheme monokai
 Plug 'morhetz/gruvbox'
-" colorscheme gruvbox
-"
 Plug 'shaunsingh/nord.nvim'
 "latex support
 Plug 'lervag/vimtex', {'for': 'tex'}
@@ -120,7 +115,7 @@ Plug  'vim-airline/vim-airline'
 Plug  'vim-airline/vim-airline-themes' 
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_alt_sep = '<>'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_statusline_ontop=1
 let g:airline_focuslost_inactive=1
@@ -155,8 +150,8 @@ Plug 'w0rp/ale', {'for':'cs'}
 Plug 'hail2u/vim-css3-syntax',{'for':['html','vue','php']}
 let g:vue_pre_processors = []
 call plug#end()
-let g:coc_node_path = '/home/askee/.nvm/versions/node/v15.12.0/bin/node'
-let g:coc_npm_path = '/home/askee/.nvm/versions/node/v15.12.0/bin/npm'
+let g:coc_node_path = '/usr/bin/node'
+let g:coc_npm_path = '/usr/bin/npm'
 let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 "------------------------------coc.nvim---------------------------------------
@@ -213,7 +208,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
     autocmd!
     " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    autocmd FileType typescript,typescriptreact,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -344,15 +339,20 @@ if(has("mac")||has("macunix"))
     set termguicolors!
 endif
 "let g:onedark_hide_endofbuffer = 1
-let g:nord_contrast =0
-let g:nord_borders =0 
-let g:nord_disable_background= 1
+"let g:nord_contrast =0
+"let g:nord_borders =0 
+"let g:nord_disable_background= 1
 let g:tokyonight_disable_background=1
 "let g:tokyonight_style = "storm"
-let g:airline_theme = "tokyonight"
+let g:airline_theme = "palenight"
 set termguicolors
 
 colorscheme palenight
+set background=dark
+highlight Normal guibg=none
+highlight NonText guibg=none
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
 set re=1
 set lazyredraw
 set synmaxcol=0
