@@ -1,17 +1,18 @@
-if bufwinnr(2)
-    map <Up> <C-W>2-
-    map <Down> <C-W>2+
-    map <Left> <C-W>2<
-    map <Right> <C-W>2>
-endif
-nnoremap <silent> vv <C-w>v
+"if bufwinnr(1)
+"    map <Up> <C-W>2-
+"   map <Down> <C-W>2+
+"  map <Left> <C-W>2<
+" map <Right> <C-W>2>
+"endif
 " remap ctrl+hkjl to jump windows in normal mode
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
 nmap <C-h> <C-W>h
+let mapleader = "\<Space>"
+let g:user_emmet_leader_key='<C-W>'
 
-set guifont=Fira\ Mono\ NF:h15
+
 let g:neovide_refresh_rate=140
 let g:neovide_no_idle=v:true
 let g:neovide_transparency=0.8
@@ -21,57 +22,51 @@ let g:neovide_fullscreen=0
 
 "-----------------------vim-plug----------------------------
 call plug#begin('~/.config/nvim/plugged')
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'mhinz/vim-startify'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'neoclide/coc.nvim', {'branch':'release'}
-Plug 'joshdick/onedark.vim',
-Plug 'ap/vim-css-color'
 let g:coc_global_extensions=[
-        \'coc-omnisharp',
-        \'coc-html',
-        \'coc-eslint',
-        \'coc-snippets',
-        \'coc-emmet',
-        \'coc-clangd',
-        \'coc-java',
-        \'coc-pairs',
-        \'coc-json',
-        \'coc-vimtex',
-        \'coc-texlab',
-        \'coc-lists',
-        \'coc-highlight',
-        \'coc-css',
-        \'coc-git',
-        \'coc-phpls',
-        \'coc-prettier',
-        \'coc-wxml',
-        \'coc-tsserver',
-        \'coc-vetur',
-        \'coc-stylelint',
-        \]
+            \'coc-html',
+            \'coc-eslint',
+            \'coc-snippets',
+            \'coc-emmet',
+            \'coc-clangd',
+            \'coc-java',
+            \'coc-pairs',
+            \'coc-json',
+            \'coc-vimtex',
+            \'coc-lists',
+            \'coc-highlight',
+            \'coc-css',
+            \'coc-git',
+            \'coc-prettier',
+            \'coc-stylelint',
+            \'coc-python',
+            \'coc-tsserver',
+            \]
 Plug 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
-        \ ['brown', 'RoyalBlue3'],
-        \ ['Darkblue', 'SeaGreen3'],
-        \ ['darkgray', 'DarkOrchid3'],
-        \ ['darkgreen', 'firebrick3'],
-        \ ['darkcyan', 'RoyalBlue3'],
-        \ ['darkred', 'SeaGreen3'],
-        \ ['darkmagenta', 'DarkOrchid3'],
-        \ ['brown', 'firebrick3'],
-        \ ['gray', 'RoyalBlue3'],
-        \ ['black', 'SeaGreen3'],
-        \ ['darkmagenta', 'DarkOrchid3'],
-        \ ['Darkblue', 'firebrick3'],
-        \ ['darkgreen', 'RoyalBlue3'],
-        \ ['darkcyan', 'SeaGreen3'],
-        \ ['darkred', 'DarkOrchid3'],
-        \ ['red', 'firebrick3'],
-        \ ]
+            \ ['brown', 'RoyalBlue3'],
+            \ ['Darkblue', 'SeaGreen3'],
+            \ ['darkgray', 'DarkOrchid3'],
+            \ ['darkgreen', 'firebrick3'],
+            \ ['darkcyan', 'RoyalBlue3'],
+            \ ['darkred', 'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown', 'firebrick3'],
+            \ ['gray', 'RoyalBlue3'],
+            \ ['black', 'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue', 'firebrick3'],
+            \ ['darkgreen', 'RoyalBlue3'],
+            \ ['darkcyan', 'SeaGreen3'],
+            \ ['darkred', 'DarkOrchid3'],
+            \ ['red', 'firebrick3'],
+            \ ]
 let g:rbpt_max = 8
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
@@ -81,13 +76,13 @@ au Syntax * RainbowParenthesesLoadBraces
 au Syntax * RainbowParenthesesLoadChevrons
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = [
-        \'css',
-        \'cs',
-        \'markdown',
-        \'reactjavascript',
-        \'reacttypescript',
-        \'php',
-        \]
+            \'css',
+            \'cs',
+            \'markdown',
+            \'reactjavascript',
+            \'reacttypescript',
+            \'php',
+            \]
 Plug 'DougBeney/pickachu'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/neco-vim'
@@ -97,56 +92,37 @@ let g:floaterm_position = 'center'
 Plug '907th/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
 Plug 'ghifarit53/tokyonight-vim'
-
-Plug 'jacoborus/tender.vim'
-Plug 'rakr/vim-one'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'shaunsingh/nord.nvim'
-"latex support
-Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
-Plug 'fmoralesc/molokayo'
+Plug 'ryanoasis/vim-devicons'
 Plug 'majutsushi/tagbar', {'on':'TagbarToggle'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'jiangmiao/auto-pairs'
-Plug  'vim-airline/vim-airline' 
-Plug  'vim-airline/vim-airline-themes' 
-let g:airline_powerline_fonts=1
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '<>'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_statusline_ontop=1
 let g:airline_focuslost_inactive=1
+let g:airline_powerline_fonts = 1
 Plug 'tpope/vim-fugitive'
 Plug 'cdelledonne/vim-cmake'
-Plug 'ryanoasis/vim-devicons'
+Plug 'Yggdroot/indentLine'
 Plug 'uiiaoo/java-syntax.vim', {'for':'java'}
 Plug 'othree/html5.vim', {'for':['html','vue','php']}
-Plug 'mattn/emmet-vim', {'for':['html','xml','vue','php','typescriptreact','javascriptreact']}
+Plug 'mattn/emmet-vim', {'for':['html','xml','vue','php','typescriptreact','javascriptreact','typescript']}
 "
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
-Plug 'maxmellon/vim-jsx-pretty', {'for':['typescriptreact','javascript','typescript','javascriptreact']}
-Plug 'HerringtonDarkholme/yats.vim', {'for':['typescriptreact','javascript','typescript','javascriptreact']}
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 Plug 'vim-scripts/matchit.zip', {'for':['html','xml','vue','php','typescriptreact','javascript','typescript','javascriptreact']}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'leshill/vim-json', {'for':'json'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-autocmd  StdinReadPre  *  let  s: std_in = 1 
-autocmd  VimEnter  *  if  argc ()  ==  1  &&  isdirectory ( argv ()[ 0 ])  &&  ! exists ( ' s:std_in ' ) |
-     \  execute  ' NERDTree '  argv ()[ 0 ] |  wincmd  p  |  enew  |  execute  ' cd  ' . argv ()[ 0 ] |  endif
-Plug 'chemzqm/wxapp.vim', {'for':['wxml','wxss','js']}
-Plug 'OmniSharp/omnisharp-vim', {'for':'cs'}
 "
-Plug 'w0rp/ale', {'for':'cs'}
 Plug 'hail2u/vim-css3-syntax',{'for':['html','vue','php']}
 let g:vue_pre_processors = []
 call plug#end()
@@ -155,23 +131,21 @@ let g:coc_npm_path = '/usr/bin/npm'
 let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 "------------------------------coc.nvim---------------------------------------
-
 filetype on
 autocmd CursorHold * silent call CocActionAsync('highlight')
 set hidden
-set cmdheight=1
+set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-set noshowmode 
 inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -257,63 +231,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "
 "-----------------------------omnisharp----------------------------------------------
 filetype indent plugin on
-" Use the stdio OmniSharp-roslyn server
-let g:OmniSharp_server_stdio = 1
-" Set the type lookup function to use the preview window instead of echoing it
-"let g:OmniSharp_typeLookupInPreview = 1
-" Timeout in seconds to wait for a response from the server
-let g:OmniSharp_timeout = 5
-" Don't autoselect first omnicomplete option, show options even if there is only
-" one (so the preview documentation is accessible). Remove 'preview' if you
-" don't want to see any documentation whatsoever.
 set completeopt=longest,menuone,preview
-" Fetch full documentation during omnicomplete requests.
-" By default, only Type/Method signatures are fetched. Full documentation can
-" still be fetched when you need it with the :OmniSharpDocumentation command.
-let g:omnicomplete_fetch_full_documentation = 1
-set previewheight=5
-" Tell ALE to use OmniSharp for linting C# files, and no other linters.
-let g:ale_linters = { 'cs': ['OmniSharp'] }
-augroup omnisharp_commands
-    autocmd!
-    " Show type information automatically when the cursor stops moving.
-    " Note that the type is echoed to the Vim command line, and will overwrite
-    " any other messages in this space including e.g. ALE linting messages.
-    autocmd CursorHold *.cs OmniSharpTypeLookup
-    " The following commands are contextual, based on the cursor position.
-    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-    " Finds members in the current buffer
-    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
-    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
-    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
-    
-    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
-    " Navigate up and down by method/property/field
-    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
-    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
-    " Find all code errors/warnings for the current solution and populate the quickfix window
-    autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
-augroup END
-" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
-nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
-" Run code actions with text selected in visual mode to extract method
-xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
-" Rename with dialog
-nnoremap <Leader>nm :OmniSharpRename<CR>
-nnoremap <F2> :OmniSharpRename<CR>
-" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
-command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
-" Start the omnisharp server for the current solution
-nnoremap <Leader>ss :OmniSharpStartServer<CR>
-nnoremap <Leader>sp :OmniSharpStopServer<CR>
-"-----------------------------omnisharp--------------------------------------------------
-"vim基础设置-----------------------------------------------------------------------------
 if has("gui_running")
     au GUIEnter * simalt ~
     set guioptions-=m "
@@ -335,24 +253,17 @@ set sm
 set selection=inclusive
 set wildmenu
 set mousemodel=popup
+set termguicolors
 if(has("mac")||has("macunix"))
     set termguicolors!
 endif
-"let g:onedark_hide_endofbuffer = 1
-"let g:nord_contrast =0
-"let g:nord_borders =0 
-"let g:nord_disable_background= 1
-let g:tokyonight_disable_background=1
-"let g:tokyonight_style = "storm"
-let g:airline_theme = "palenight"
-set termguicolors
+let g:airline_theme = "tokyonight"
+let g:tokyonight_style="storm"
+let g:tokyonight_transparent=1
 
-colorscheme palenight
-set background=dark
-highlight Normal guibg=none
-highlight NonText guibg=none
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
+
+colorscheme tokyonight
+let g:webdevicons_enable_nerdtree = 1
 set re=1
 set lazyredraw
 set synmaxcol=0
@@ -363,7 +274,7 @@ set cuc
 set ruler
 set showcmd
 set scrolloff=2
-set laststatus=1
+set laststatus=2
 set foldenable
 set foldmethod=manual
 set cursorline
@@ -377,6 +288,7 @@ set expandtab
 set smarttab
 " 显示行号
 set number
+set showmode
 " 历史记录数
 set history=1000
 "搜索逐字符高亮
@@ -394,15 +306,22 @@ map <S-H> :tabp<CR>
 map <S-L> :tabn<CR>
 map <S-Left> :tabp<CR>
 map <S-Right> :tabn<CR>
+map <C-H> :bn<CR>
+map <C-L> :bp<CR>
 map <C-Left> :bn<CR>            "
 map <C-Right> :bp<CR>
 noremap <F12> :Format<CR>:syntax sync fromstart<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-autocmd filetype yaml,vue nnoremap <buffer> <F12> :Prettier<CR>
+
+
+autocmd filetype yaml,vue,javascript,javascriptreact,typescriptreact,typescript nnoremap <buffer> <F12> :Prettier<CR>
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
 autocmd filetype cs,c,cpp,kotlin,sh,vim noremap <buffer> <F12> :Autoformat<CR>
 nnoremap <F2> :g/^\s*$/d<CR>:g/\s\+$/s<CR>
 map! <C-O> <C-Y>,
-nmap <F3> :NERDTreeToggle<CR>
+nmap <C-Space> :NERDTreeToggle<CR>
 "nmap <F4> :CocCommand floaterm.toggle<CR>
 let g:floaterm_keymap_toggle = '<F4>'
 "tagbar
@@ -492,9 +411,11 @@ set matchtime=5
 " 光标移动到buffer的顶部和底部时保持3行距离
 set scrolloff=5
 set autochdir "输出时只有文件名，不带./ ../等目录前缀(默认了执行％在当前的目录下)
+set termencoding=UTF-8
+set encoding=UTF-8
 "在插入模式中使用Ctrl+v粘贴全局剪贴板内容
-"imap <C-V> <Esc>"+gp
-"nmap <C-V> "+gp
+imap <C-V> <Esc>"+gp
+nmap <C-V> "+gp
 "在Visual模式中使用Ctrl+c复制内容到全局剪贴板
 vnoremap <C-c> "+y
 "在Visual模式中使用Ctrl+x剪切内容到全局剪贴板
@@ -512,16 +433,18 @@ set ttimeoutlen=150
 "退出插入模式
 "autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
 "#####################################################################
-
+"
+"
+"
 "fzf-----------------------------------------------------------------------
-"function! s:fzf_statusline()
+function! s:fzf_statusline()
     " Override statusline as you like
-    "highlight fzf1 ctermfg=161 ctermbg=251
-    "highlight fzf2 ctermfg=23 ctermbg=251
-    "highlight fzf3 ctermfg=237 ctermbg=251
-   " setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-"endfunction
-"autocmd! User FzfStatusLine call <SID>fzf_statusline()
+    highlight fzf1 ctermfg=161 ctermbg=251
+    highlight fzf2 ctermfg=23 ctermbg=251
+    highlight fzf3 ctermfg=237 ctermbg=251
+    setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " [[B]Commits] Customize the options used by 'git log':
@@ -551,6 +474,16 @@ nmap ft :Tags<CR>
 let g:fzf_action = { 'ctrl-b': 'edit' }
 inoremap <S-Tab> <esc>la
 map <A-c> :Pickachu<CR>
+
+hi Normal guibg=none ctermbg=none
+hi LineNr guibg=none ctermbg=none
+hi Folded guibg=none ctermbg=none
+hi NonText guibg=none ctermbg=none
+hi SpecialKey guibg=none ctermbg=none
+hi VertSplit guibg=none ctermbg=none
+hi SignColumn guibg=none ctermbg=none
+hi EndOfBuffer guibg=none ctermbg=none
+
 " Advanced customization using Vim function
 "闪烁光标------------------------------------------------------------------
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
