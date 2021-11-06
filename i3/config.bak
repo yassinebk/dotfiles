@@ -69,8 +69,7 @@ set $right semicolon
 #exec --no-startup-id xrandr --output DVI-1 --right-of DVI-0 --auto
 #exec --no-startup-id xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
 #exec --no-startup-id xrandr --output HDMI-2 --right-of HDMI-1 --auto
-exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
-
+exec --no-startup-id xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-4 --mode 1920x1080 --pos 0x0 --rotate normal
 
 # my current setup
 
@@ -90,8 +89,8 @@ exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
 #set $firstMonitor HDMI-1
 #set $secondMonitor HDMI-2
 
-set $firstMonitor HDMI1
-set $secondMonitor HDMI2
+set $firstMonitor HDM-0
+set $secondMonitor DP-4
 
 workspace 1 output $firstMonitor
 workspace 2 output $firstMonitor
@@ -135,7 +134,7 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#ffffff' -sb '#ffffff' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
 # start xfce4-appfinder
 bindsym mod1+F2 exec --no-startup-id xfce4-appfinder --collapsed
@@ -466,19 +465,19 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id volumeicon
 
 #variety
-exec --no-startup-id variety
+#exec --no-startup-id variety
 
 # clipman
 exec --no-startup-id flameshot
 
 #Conky
-exec --no-startup-id conky -c ~/.config/i3/system-overview
+#exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 #feh sets wallpaper
 #exec --no-startup-id feh --bg-fill ~/Downloads/marat-zakirov-7-strange-fields.jpg &
 
 #Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/openbox/launch.sh &
 
 #####################################################################################################################
 #################                                 system applications                               #################
@@ -881,101 +880,101 @@ bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 #####################################################################################################################
 #####################################################################################################################
 
-bar {
-
-    height 25
-    workspace_buttons yes
-    font pango:Noto Sans 14
-
-    #position top
-    position bottom
-
-    #system icons
-    #tray_output none
-    #tray_output $firstMonitor
-    #tray_output $secondMonitor
-
-
-
-    # OPTION 1 : i3status
-
-    # type status_command i3status without the config file and
-    # you will get the standard i3status bar
-    # Second one is the standard statusbar with my personal settings
-
-    #status_command i3status
-#status_command i3status -c ~/.config/i3/i3status.conf
-
-
-
-    # OPTION 2 : i3blocks
-
-    # https://github.com/vivien/i3blocks
-    # another way to provide text in the statusbar
-    # put hastag in front if not installed
-
-    #status_command i3blocks
-    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    #status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
-    #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
-    #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
-
-
-    # OPTION 3 : conky
-
-    # You can also replace the istatus bar with a conky
-    # start-conky-i3statusbar.sh is started and conky will follow
-    # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
-    # conky configuration is in conky-i3statusbar
-
-    #status_command ~/.config/i3/start-conky-i3statusbar.sh
-
-
-
-    # OPTION 4 : polybar
-
-    # polybar is launched elsewhere - search for the word
-    # from the opening of the "bar {...}" till the end has to go or hashtagged out
-    # in order for the system trayicons to show up in polybar
-
-
-    ##START THEMING BAR
-    #Theme name : ArcoLinux Var Ashes
-
-    # i3 bar colors
-    # variable border background Text
-
-    set $base00 #1C2023
-    set $base01 #393F45
-    set $base02 #565E65
-    set $base03 #747C84
-    set $base04 #ADB3BA
-    set $base05 #C7CCD1
-    set $base06 #DFE2E5
-    set $base07 #F3F4F5
-    set $base08 #C7AE95
-    set $base09 #C7C795
-    set $base0A #AEC795
-    set $base0B #95C7AE
-    set $base0C #95AEC7
-    set $base0D #AE95C7
-    set $base0E #C795AE
-    set $base0F #C79595
-
-    colors {
-        background $base00
-        separator  $base01
-        statusline $base04
-
-        # colorclass           border  backgr. text
-        focused_workspace     $base05 $base0D $base00
-        active_workspace      $base05 $base03 $base00
-        inactive_workspace    $base03 $base01 $base05
-        urgent_workspace      $base08 $base08 $base00
-        }
-
-    }
-    ##STOP THEMING BAR
+#bar {
+#
+#    height 25
+#    workspace_buttons yes
+#    font pango:Noto Sans 14
+#
+#    #position top
+#    position bottom
+#
+#    #system icons
+#    #tray_output none
+#    #tray_output $firstMonitor
+#    #tray_output $secondMonitor
+#
+#
+#
+#    # OPTION 1 : i3status
+#
+#    # type status_command i3status without the config file and
+#    # you will get the standard i3status bar
+#    # Second one is the standard statusbar with my personal settings
+#
+#    #status_command i3status
+##status_command i3status -c ~/.config/i3/i3status.conf
+#
+#
+#
+#    # OPTION 2 : i3blocks
+#
+#    # https://github.com/vivien/i3blocks
+#    # another way to provide text in the statusbar
+#    # put hastag in front if not installed
+#
+#    #status_command i3blocks
+#    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#    #status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
+#    #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
+#    #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+#
+#
+#    # OPTION 3 : conky
+#
+#    # You can also replace the istatus bar with a conky
+#    # start-conky-i3statusbar.sh is started and conky will follow
+#    # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
+#    # conky configuration is in conky-i3statusbar
+#
+#    #status_command ~/.config/i3/start-conky-i3statusbar.sh
+#
+#
+#
+#    # OPTION 4 : polybar
+#
+#    # polybar is launched elsewhere - search for the word
+#    # from the opening of the "bar {...}" till the end has to go or hashtagged out
+#    # in order for the system trayicons to show up in polybar
+#
+#
+#    ##START THEMING BAR
+#    #Theme name : ArcoLinux Var Ashes
+#
+#    # i3 bar colors
+#    # variable border background Text
+#
+#    set $base00 #1C2023
+#    set $base01 #393F45
+#    set $base02 #565E65
+#    set $base03 #747C84
+#    set $base04 #ADB3BA
+#    set $base05 #C7CCD1
+#    set $base06 #DFE2E5
+#    set $base07 #F3F4F5
+#    set $base08 #C7AE95
+#    set $base09 #C7C795
+#    set $base0A #AEC795
+#    set $base0B #95C7AE
+#    set $base0C #95AEC7
+#    set $base0D #AE95C7
+#    set $base0E #C795AE
+#    set $base0F #C79595
+#
+#    colors {
+#        background $base00
+#        separator  $base01
+#        statusline $base04
+#
+#        # colorclass           border  backgr. text
+#        focused_workspace     $base05 $base0D $base00
+#        active_workspace      $base05 $base03 $base00
+#        inactive_workspace    $base03 $base01 $base05
+#        urgent_workspace      $base08 $base08 $base00
+#        }
+#
+#    }
+#    ##STOP THEMING BAR
 
     ##START THEMING WM
     #Theme name : ArcoLinux Zion
